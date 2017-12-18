@@ -9,11 +9,13 @@ class SessionsController < ApplicationController
       flash[:success] = 'ログインに成功しました。'
       redirect_to @user
     else
-      flash.now[:danger] = 'ログインに失敗しました。'
+      flash[:danger] = 'ログインに失敗しました。'
       render 'new'
     end
   end
-
+  
+  
+  
   def destroy
    session[:user_id] = nil
     flash[:success] = 'ログアウトしました。'

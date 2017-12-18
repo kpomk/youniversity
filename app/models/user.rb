@@ -6,10 +6,5 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  validates :belonging, :numericality => { :allow_blank => true }
-  validates :major, :numericality => { :allow_blank => true }
-  validates :publication, :numericality => { :allow_blank => true }
-  
-  
-  
+
 end
