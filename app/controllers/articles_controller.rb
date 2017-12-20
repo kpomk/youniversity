@@ -1,27 +1,66 @@
 class ArticlesController < ApplicationController
   
-  before_action :require_login, only: [:new, :create, :destroy, :edit, :update]
+  before_action :require_user_logged_in, only: [:new, :create, :destroy, :edit, :update]
   
   def index
-    @articles = Article.all　#　未定
+    
   end
 
   def show
-    @article = Articles.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def new
+    @article = Article.new
   end
+
 
   def create
+    @article = current_user.articles.build(article_params)
+    if @article.save
+      flash[:success] = '記事をを投稿しました。'
+      redirect_to user_path(current_user)
+    else
+      @articles = current_user.articles.order('created_at DESC').page(params[:page])
+      flash.now[:danger] = '記事のの投稿に失敗しました。'
+      render new_article_path
+    end
   end
 
+
   def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    flash[:success] = 'この記は削除されました'
+    redirect_to user_path(current_user)
+    
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def update
+    @article = Article.find(params[:id])
+    
+    if @article.update(article_params)
+      flash[:success] = '記事の編集 は正常に実行されました'
+      redirect_to @article
+    else
+      flash.now[:danger] = '記事の編集 に失敗しました'
+      render :edit
+    end
   end
+  
+  
+  
+  private
+
+  
+  def article_params
+    params.require(:article).permit(:content, :title, :keyword, :category_id, :bibilography, :slideshare_embed, :movie)
+  end
+  
+  
 end

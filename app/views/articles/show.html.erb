@@ -1,19 +1,22 @@
 <div class="container">
-  <header>
+ 
     <h1> <%= @article.title %></h1>
-  </header>
-  <body>
+  
     <div>
+       <label class="control-label">内容</label>
        <%= @article.content %>
     </div>
     <div>
+       <label class="control-label">シェアスライド</label>
+       <%= @article.slideshare_embed %>
+    </div>
+    
+    <div>
+       <label class="control-label">参考文献</label>
        <%= @article.bibilography %>
     </div>
     
-    
-    
-  </body>
-  
-  
-  
+    <%= link_to 'MY pageに戻る', user_path(current_user) %>
+    <%= link_to 'この記事を編集する', edit_article_path(@article) %>
+    <%= link_to 'この記事を削除する', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
 </div>

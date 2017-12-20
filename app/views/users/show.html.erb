@@ -5,11 +5,14 @@
     </div>
     
     <div class="panel-body">
+      <div><%= link_to '新規記事の作成', new_article_path %></div>
       <ul>
         <li><label class="control-label">所属: <%= @user.belonging %></label></li>
         <li><label class="control-label">専門: <%= @user.major %></label></li>
         <li><label class="control-label">所属: <%= @user.publication %></label></li>
-        <li><label class="control-label">記事一覧:<%= render 'articles/articles', articles: @articles %></li>
+          <li><label class="control-label">記事一覧:<%= render 'articles/articles', articles: @articles %>
+          　
+          </li>
     
       </ul>
     </div>
