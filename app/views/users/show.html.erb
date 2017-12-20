@@ -1,13 +1,17 @@
 <div class="row">
  <div class="panel panel-default">
     <div class="panel-heading">
-       <h3 class="panel-title"><%= @user.name %>さんのプロフィール</3>
+       <h2 class="panel-title"><%= @user.name %>さんのプロフィール</h2>
     </div>
     
     <div class="panel-body">
-      <h3 class="panel-title"><%= @user.belonging %></h3>
-      <h3 class="panel-title"><%= @user.major %></h3>
-      <h3 class="panel-title"><%= @user.publication %></h3>
+      <ul>
+        <li><label class="control-label">所属: <%= @user.belonging %></label></li>
+        <li><label class="control-label">専門: <%= @user.major %></label></li>
+        <li><label class="control-label">所属: <%= @user.publication %></label></li>
+        <li><label class="control-label">記事一覧:<%= render 'articles/articles', articles: @articles %></li>
+    
+      </ul>
     </div>
     
   </div>
