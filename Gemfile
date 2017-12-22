@@ -55,3 +55,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 gem 'rails-i18n'
 gem 'pry-byebug', group: :development
+gem 'carrierwave'
+gem 'fog-aws'
+
+gem 'streamio-ffmpeg'
+	
+gem 'flowplayer', git: 'git://github.com/scottdavis/flowplayer-gem.git'
+	

@@ -12,8 +12,31 @@
     </div>
     
     <div>
+    <%#= flowplayer_for :movie, '/flowplayer.swf' do |player|
+      player.playlist [ {:url => @article.movie_url(:ss).to_s},
+                    {:url => @article.movie_url.to_s,
+                     :autoplay => false,
+                    :autoBuffering => true}]
+      player.onload do
+        'this.unmute();'
+      end
+    end %>    
+     <%#= video_tag("https://s3-ap-northeast-1.amazonaws.com/youniversity/uploads/article/movie/16/8311e53c19.mp4", :autoplay => true, :loop => true) %>   
+    <%#= image_tag @article.movie_url(:ss).to_s %>
+    <%#= video_tag @article.movie_url(:ss).to_s %>
+    <%#= video_tag("@article.movie_url") %>
+    <%#= video_tag("@ariticle.movie.url") %>
+    <%= video_tag @article.movie.url, :controls => true %>
+    </div>
+    
+    <div>
        <label class="control-label">参考文献</label>
        <%= @article.bibilography %>
+    </div>
+    
+    <div>
+        画像
+        <%= eyecatch_image(@article) %>
     </div>
     
     <%= link_to 'MY pageに戻る', user_path(current_user) %>

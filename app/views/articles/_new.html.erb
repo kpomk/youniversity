@@ -30,9 +30,10 @@
   <%= f.label :content, '内容' %>
   <%= f.text_field :content %>
   
-  <%= f.label :movie %>
-  <%= f.file_field :movie, :accept => 'video/*' %> 
-  
+  <div class="field">
+  <%= f.label :movie %><br>
+  <%= f.file_field :movie, :accept => 'video/*' %>
+</div>
   
   <%= f.label :bibilography, '参考文献' %>
   <%= f.text_field :bibilography %>
