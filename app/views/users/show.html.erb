@@ -1,23 +1,36 @@
-<div class="row">
- <div class="panel panel-default">
-    <div class="panel-heading">
-       <h2 class="panel-title"><%= @user.name %>さんのプロフィール</h2>
-    </div>
-    
-    <div class="panel-body">
-      <div><%= link_to '新規記事の作成', new_article_path %></div>
-      <ul>
-        <li><label class="control-label">所属: <%= @user.belonging %></label></li>
-        <li><label class="control-label">専門: <%= @user.major %></label></li>
-        <li><label class="control-label">所属: <%= @user.publication %></label></li>
-          <li><label class="control-label">記事一覧:<%= render 'articles/articles', articles: @articles %>
-          　
-          </li>
-    
-      </ul>
-    </div>
-    
+<div class="container">
+  <div class="panel panel-default">
+     <div class="panel-heading">
+       <h2 class="panel-title"><%= @user.name %> さんのプロフィール
+         <button class="btn btn-defalt" , >
+           <%= link_to '新規記事の作成', new_article_path %>
+         </button>
+        </h2>
+     </div>   
+     
+        <div class="panel-body"> 
+            <div class="row">
+                <ul>
+                  <li><label class="control-label">所属: <%= @user.belonging %></label></li>
+                  <li><label class="control-label">専門: <%= @user.major %></label></li>
+                  <li><label class="control-label">所属: <%= @user.publication %></label></li>
+                </ul>
+            </div>
+            <div class="row">
+               <% @articles.each do |article| %>
+               <% user = article.user %>
+                <div class="col-xs-12 col-sm-6" "col-md-4">
+                   <div class="thumnail">
+                    <%= image_tag(article.eyecatch,:size => "120x120") %>
+                  
+                   <div class="caption">
+                       <p><%= link_to article.title, article %> </p>
+                   </div>
+                </div>   
+             </div>
+               <% end %>
+          </div>  
+        </div> 
+    </div>    
+   
   </div>
-      
-</div>
- 

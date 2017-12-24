@@ -11,26 +11,36 @@
       <a class="navbar-left" href="/"><img src="/images/logos.png" alt="Youniversity"></a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+        
+      
          <% if logged_in? %>
+      <ul class="nav navbar-nav navbar-nav">
           <ul class="dropdown-menu">
             <li><a href="#">カテゴリー</a></li>
             <li role="separator" class="divider"></li>
                 <li><a href="#">カテゴリー2</a></li>
           </ul>
            <li><a href="#">検索</a></li>
+      </ul>
+          <ul class="nav navbar-nav navbar-right"> 
            <li><%= link_to 'マイページ', user_path(current_user) %></li>
          　<li><%= link_to 'Logout', logout_path, method: :delete %></li>
-        
+          </ul>
+          
+          
         <% else %>
+        <ul class="nav navbar-nav navbar-nav">
          <ul class="dropdown-menu">
             <li><a href="#">カテゴリー</a></li>
             <li role="separator" class="divider"></li>
                 <li><a href="#">カテゴリー2</a></li>
           </ul>
           <li><a href="#">検索</a></li>
+        </ul>  
+        <ul class="nav navbar-nav navbar-right"> 
           <li><%= link_to '新規登録', signup_path %></li>
           <li><%= link_to 'ログイン', login_path %></li>
+        </ul>  
         <% end %>  
       </ul>
       </div>
