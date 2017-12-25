@@ -2,49 +2,57 @@
      
     <div class="panel panel-default">
        <div class="panel-heading">
-         <h1 class="panel-title"><%= @article.title %> </h1>
-       </div>  
-    <div class="panel-body"> 
-      <div class="row">
-          <div>
-             <label class="control-label">内容</label>
-             <%= @article.content %>
+         <div class="panel-title">
+           <h3><%= @article.title %> </h3>
           </div>
-      <div class="row">
-         <label class="control-label">シェアスライド</label>
-         <%= @article.slideshare_embed %>
-      </div class="row">
-    
-      <div>
-        <%#= flowplayer_for :movie, '/flowplayer.swf' do |player|
-          player.playlist [ {:url => @article.movie_url(:ss).to_s},
-                        {:url => @article.movie_url.to_s,
-                         :autoplay => false,
-                        :autoBuffering => true}]
-          player.onload do
-            'this.unmute();'
-          end
-        end %>    
-         <%#= video_tag("https://s3-ap-northeast-1.amazonaws.com/youniversity/uploads/article/movie/16/8311e53c19.mp4", :autoplay => true, :loop => true) %>   
-        <%#= image_tag @article.movie_url(:ss).to_s %>
-        <%#= video_tag @article.movie_url(:ss).to_s %>
-        <%#= video_tag("@article.movie_url") %>
-        <%#= video_tag("@ariticle.movie.url") %>
-        <%= video_tag @article.movie.url, :controls => true %>
-      </div>
-    
-      <div class="row">
-         <label class="control-label">参考文献</label>
-         <%= @article.bibilography %>
-      </div>
-    
-      <div>
-          
-          <%#= eyecatch_image(@article) %>
-      </div>
-    </div  
-  </div>    
-    <%= link_to 'MY pageに戻る', user_path(current_user) %>
-    <%= link_to 'この記事を編集する', edit_article_path(@article) %>
-    <%= link_to 'この記事を削除する', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+       </div>  
+      <div class="panel-body"> 
+        <% if @article.content.present? %>
+          <div class="row">
+              <div>
+                 <label class="control-label">内容</label>
+                 <%= @article.content %>
+              </div>
+          </div>    
+        <% end %>
+
+        <% if @article.slideshare_embed.present? %>
+          <div class="row">
+             <label class="control-label">シェアスライド</label>
+             <%= raw @article.slideshare_embed %>
+          </div>
+        <% end %>
+
+        <% if @article.movie.present? %>
+          <div class="row">
+              <%= video_tag(@article.movie.url, :controls => true) %>
+          </div>
+        <% end %>
+          <%#= flowplayer_for :movie, '/flowplayer.swf' do |player|
+            player.playlist [ {:url => @article.movie_url(:ss).to_s},
+                          {:url => @article.movie_url.to_s,
+                           :autoplay => false,
+                          :autoBuffering => true}]
+            player.onload do
+              'this.unmute();'
+            end
+          end %>    
+           <%#= video_tag("https://s3-ap-northeast-1.amazonaws.com/youniversity/uploads/article/movie/16/8311e53c19.mp4", :autoplay => true, :loop => true) %>   
+          <%#= image_tag @article.movie_url(:ss).to_s %>
+          <%#= video_tag @article.movie_url(:ss).to_s %>
+          <%#= video_tag("@article.movie_url") %>
+          <%#= video_tag("@ariticle.movie.url") %>
+
+        <div class="row">
+           <label class="control-label">参考文献</label>
+           <%= @article.bibilography %>
+        </div>
+              <%#= eyecatch_image(@article) %>
+      
+        <button class="btn btn-defalt" , ><%= link_to 'MY pageに戻る', user_path(current_user) %></button>
+        <%= link_to 'この記事を編集する', edit_article_path(@article) %>
+        <%= link_to 'この記事を削除する', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+    </div>
+   </div> 
 </div>
+    
