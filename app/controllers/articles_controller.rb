@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
   
   before_action :require_user_logged_in, only: [:new, :create, :destroy, :edit, :update]
+   before_action :correct_user, only: [:destroy, :edit, :update]
   
   def index
-    
+    @articles = Article.all
   end
 
   def show
@@ -62,5 +63,12 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:content, :title, :keyword, :category_id, :bibilography, :slideshare_embed, :movie, :eyecatch)
   end
   
+  def correct_user
+    @article = current_user.articles.find_by(id: params[:id])
+    unless @article
+      redirect_to root_url
+  end
+  
+end
   
 end

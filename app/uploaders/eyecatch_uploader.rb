@@ -1,8 +1,7 @@
 class EyecatchUploader < CarrierWave::Uploader::Base
 
-  version :thumb_300 do
-     process :resize_to_fit => [300, 300]
-   end
+  
+  
 
    def default_url
        ActionController::Base.helpers.asset_path("half-main-imgbox6.png")

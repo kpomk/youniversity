@@ -16,6 +16,15 @@ class Article < ApplicationRecord
   #validates :content, presence: true
   
   validate :content_type
+  
+  has_many :ownerships, :dependent => :destroy
+  has_many :users, through: :ownerships
+  
+  has_many :wants
+  has_many :want_users, through: :wants, class_name: 'User', source: :user
+  
+   has_many :likes
+  has_many :like_users, through: :likes, class_name: 'User', source: :user 
 
   def content_type
     

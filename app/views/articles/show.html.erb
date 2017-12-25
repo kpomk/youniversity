@@ -4,6 +4,8 @@
        <div class="panel-heading">
          <div class="panel-title">
            <h3><%= @article.title %> </h3>
+           <%= render 'ownerships/want_button', article: @article %>
+           <%= render 'ownerships/like_button', article: @article %>
           </div>
        </div>  
       <div class="panel-body"> 

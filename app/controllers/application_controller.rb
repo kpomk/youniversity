@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   
    include SessionsHelper
 
+   def counts(article)
+    @count_articles = user.articles.count
+    @count_want = user.wants.count
+    @count_likes = user.likes.count
+  end
+
+
+
   private
 
   def require_user_logged_in

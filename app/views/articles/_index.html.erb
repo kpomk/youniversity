@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="row">
+               <% articles.each do |article| %>
+               
+                <div class="col-xs-12 col-sm-6" "col-md-4">
+                   <div class="thumnail">
+                    <%= image_tag(article.eyecatch,:size => "120x120") %>
+                  
+                   <div class="caption">
+                       <h4><%= link_to article.title, article %> </h>
+                   </div>
+                </div>   
+     </div>
+              <% end %>
+  </div> 
+</div>

@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  
+   before_action :require_user_logged_in, only: [:wants, :likes]
  
   
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.all
-    
+    @count_want = @user.want_articles.count
+   
   end
 
   def new

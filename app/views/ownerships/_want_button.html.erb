@@ -1,0 +1,17 @@
+
+<% if current_user.want?(article) %>
+  <%#= form_for(current_user.ownerships.find_by(article_id: article.id), html: { method: :delete }) do |f| %>
+   <%= form_tag(ownership_path(article.id), method: :delete) do %>
+    <%= hidden_field_tag :article_id, article.id %>
+    <%= hidden_field_tag :type, 'Want' %>
+   
+    <%= submit_tag 'もうみた', class: 'btn btn-danger btn-block' %>
+  <% end %>
+<% else %>
+  <%#= form_for(current_user.ownerships.build) do |f| %>
+   <%= form_tag(ownerships_path) do %>
+    <%= hidden_field_tag :article_id, article.id %>
+    <%= hidden_field_tag :type, 'Want' %>
+    <%= submit_tag 'あとで見る', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
