@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :already_signed_in?, only: :new
+  skip_before_action :require_user_logged_in, only: [:new, :create]
+  
   def new
   end
 
@@ -34,6 +37,10 @@ class SessionsController < ApplicationController
       # ログイン失敗
       return false
     end
+  end
+  
+  def already_signed_in?
+    redirect_to root_url if logged_in?
   end
   
 end

@@ -1,15 +1,17 @@
 class ArticlesController < ApplicationController
   
-  before_action :require_user_logged_in, only: [:new, :create, :destroy, :edit, :update]
+  before_action :require_user_logged_in, only: [:new, :create, :destroy, :edit, :update, :show]
    before_action :correct_user, only: [:destroy, :edit, :update]
   
   def index
-    @articles = Article.all
+   @articles = Article.search(params[:search])
   end
+  
 
   def show
     @article = Article.find(params[:id])
   end
+ 
 
   def new
     @article = Article.new

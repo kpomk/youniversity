@@ -20,7 +20,12 @@
             <li role="separator" class="divider"></li>
                 <li><a href="#">カテゴリー2</a></li>
           </ul>
-           <li><a href="#">検索</a></li>
+           <%= form_tag articles_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+            <p>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Search", :keyword => nil %>
+            </p>
+          <% end %>
       </ul>
           <ul class="nav navbar-nav navbar-right"> 
            <li><%= link_to 'マイページ', user_path(current_user) %></li>
@@ -35,7 +40,13 @@
             <li role="separator" class="divider"></li>
                 <li><a href="#">カテゴリー2</a></li>
           </ul>
-          <li><a href="#">検索</a></li>
+          <li><%= form_tag articles_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+            <p>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Search", :keyword => nil %>
+            </p>
+              <% end %>
+          </li>
         </ul>  
         <ul class="nav navbar-nav navbar-right"> 
           <li><%= link_to '新規登録', signup_path %></li>
