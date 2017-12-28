@@ -18,28 +18,23 @@
             </div>
         
            <% if current_user == @user %>    
-           
-            <div class="row">
-                 <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
-                    <div class="item">
-                      <div class="panel panel-default">
-                            <div class="panel-heading text-center">
-                                <% @articles.each do |article| %>
-                                   <% user = article.user %>
+           <span class="d-inline-block ">
+              
+                    <span class="panel-heading">
+                            <% @articles.each do |article| %>
+                               <% user = article.user %>
                              <%= image_tag(article.eyecatch,:size => "120x120") %>
-                            </div>
-                            <div class="panel-body">
-                              <p class="item-title"><%= link_to article.title, article %></p>
-                              
-                            </div>
-                        <% end %>
-                      </div>
-                  </div>
-                        
-                </div> 
-              <% end %>
-            </div> 
+                          
+                        <span class="panel-body">
+                          <p class="item-title"><%= link_to article.title, article %></p>
+                        </span>
+                     </span> 
+                    <% end %>
+                </span> 
+              <% end %>   
+            
         </div>
-    </div>    
+    </div>   
+    </div>
    
   
