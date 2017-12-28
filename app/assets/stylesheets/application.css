@@ -16,6 +16,9 @@ footer {
   margin-top: 5px;
   height: 40px;
 }
+.navbar-default .navbar-nav>li>a {
+    color: #FFFAF0;
+}
 
 /* cover */
 .cover {
@@ -39,7 +42,22 @@ footer {
 }
 .cover .cover-inner .cover-contents h1 {
   margin: 0 0 20px 0;
-  color: #fff;
+  color: #FFFAF0;
   font-weight: bold;
   letter-spacing: 0.15em;
+}
+
+/* content */
+.content{
+display:flex;
+width:100%;
+margin: auto;
+}
+.column{
+padding: 10px;
+border:1px solid #333;
+margin-right: 20px;
+}
+.column:last-child{
+margin-right:0;
 }

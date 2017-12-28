@@ -17,24 +17,20 @@
                 </ul>
             </div>
         
-           <% if current_user == @user %>    
-           <span class="d-inline-block ">
-              
-                    <span class="panel-heading">
-                            <% @articles.each do |article| %>
-                               <% user = article.user %>
-                             <%= image_tag(article.eyecatch,:size => "120x120") %>
-                          
-                        <span class="panel-body">
-                          <p class="item-title"><%= link_to article.title, article %></p>
-                        </span>
-                     </span> 
+                   <% if current_user == @user %>    
+                  <div class="content">
+                       <% @articles.each do |article| %>
+                        <% user = article.user %>
+                    <div class="column">
+                        <%= image_tag(article.eyecatch,:size => "120x120") %>
+                        <p class="item-title"><%= link_to article.title, article %></p>
+                    </div>
                     <% end %>
-                </span> 
-              <% end %>   
-            
-        </div>
-    </div>   
-    </div>
+                  </div>
+                  <% end %>
+                  
+         </div>
+    </div> 
+</div>
    
-  
+ 
