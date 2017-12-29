@@ -1,0 +1,16 @@
+
+<span>人気記事一覧</span>
+          <div class="content">
+                <% @articles.each_with_index do |article, index| %>
+                  <div class="column">
+                    <div class="panel-heading text-center">
+                      <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
+                    </div>
+                      <div class="panel-body">
+                       <p class="article-title"><%= link_to article.title, article %></p>
+                      </div>
+                  </div>
+               
+            <% end %>
+            <%= paginate @articles %>
+          </div>

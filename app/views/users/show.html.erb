@@ -16,15 +16,23 @@
                   <li><label class="control-label">所属: <%= @user.publication %></label></li>
                 </ul>
             </div>
+           
+            
         
                    <% if current_user == @user %>    
                   <div class="content">
                        <% @articles.each do |article| %>
                         <% user = article.user %>
-                    <div class="column">
-                        <%= image_tag(article.eyecatch,:size => "120x120") %>
-                        <p class="item-title"><%= link_to article.title, article %></p>
-                    </div>
+                        
+                          <div class="column">
+                            <div class="panel-heading text-center">
+                              <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
+                            </div>
+                              <div class="panel-body">
+                               <p class="article-title"><%= link_to article.title, article %></p>
+                              </div>
+                          </div>
+                       
                     <% end %>
                   </div>
                   <% end %>

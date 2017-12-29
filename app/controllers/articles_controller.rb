@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
    before_action :correct_user, only: [:destroy, :edit, :update]
   
   def index
+   
    @articles = Article.search(params[:search])
   end
   

@@ -57,7 +57,20 @@ margin: auto;
 padding: 10px;
 border:1px solid #333;
 margin-right: 20px;
+border-radius: 10px;        /* CSS3草案 */  
+
 }
 .column:last-child{
 margin-right:0;
+}
+
+.sns-share-buttons{
+  margin: 0;
+  padding: 0;
+}
+.sns-share-buttons li{
+  display: inline-block;
+  vertical-align: top;
+  line-height: 0;
+  margin-right: 5px;
 }
