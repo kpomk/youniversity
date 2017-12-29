@@ -5,6 +5,10 @@ class ToppagesController < ApplicationController
     article_id = Like.group(:article_id).order("count_all desc").count.first.first
     @articles=Article.find(article_id)
     #@articles= Article.all.page(params[:page]).per(6)
-     @items = Article.all
+    if params[:category_id]
+      @items = Article.where(category_id: params[:category_id])
+    else
+      @items = Article.all
+    end
   end
 end
