@@ -8,11 +8,17 @@
   </div>
 <% end %>
 <div class="container">
-  <div class="panel panel-default">
+  <%= render 'toppages/toppagelike', articles: @ranking_articles %>
+   <%= paginate @ranking_articles %>
+    <%= render 'toppages/newarrival', articles: @newarrivals %>
+   <%= paginate @newarrivals %>
+ 
     <%#= render 'rankings/like', articles: @articles %>
-       
+    
+    
+    
 
 
-    <%= render 'articles/index', articles: @items %>
+    <%#= render 'articles/index', articles: @items %>
   </div>
 </div>

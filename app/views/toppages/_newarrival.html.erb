@@ -1,7 +1,7 @@
-<div class="panel panel-default">
-  <span>人気記事一覧</span>
+
+  <span>  <h2>新着記事一覧</h2>  </span>
     <div class="content">
-       <% @articles.each_with_index do |article, index| %>
+       <% @newarrivals.each_with_index do |article, index| %>
           <div class="column">
             <div class="panel-heading text-center">
               <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
@@ -12,5 +12,5 @@
           </div>
        
     <% end %>
-    <%= paginate @articles %>
-    </div>
+    <%#= paginate @newarrivals %>
+    
