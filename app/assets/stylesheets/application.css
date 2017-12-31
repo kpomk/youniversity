@@ -69,6 +69,10 @@ border-radius: 10px;        /* CSS3草案 */
 margin-right:0;
 }
 
+
+
+
+
 .sns-share-buttons{
   margin: 0;
   padding: 0;
@@ -78,4 +82,39 @@ margin-right:0;
   vertical-align: top;
   line-height: 0;
   margin-right: 5px;
+}
+
+.bs-sidebar.affix {
+  position: static;
+}
+
+/* 中略 */
+
+@media (min-width: 992px) {
+  .bs-sidebar .nav > .active > ul {
+    display: block;
+  }
+  /* Widen the fixed sidebar */
+  .bs-sidebar.affix,
+  .bs-sidebar.affix-bottom {
+    width: 213px;
+   
+  }
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 80px;
+  }
+  .bs-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .bs-sidebar.affix-bottom .bs-sidenav,
+  .bs-sidebar.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.btn {
+    
+    margin-bottom: 5px;
 }

@@ -1,16 +1,22 @@
-
-  <span>  <h2>新着記事一覧</h2>  </span>
-    <div class="content">
-       <% @newarrivals.each_with_index do |article, index| %>
-          <div class="column">
-            <div class="panel-heading text-center">
-              <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
-            </div>
-              <div class="panel-body">
-               <p class="article-title"><%= link_to article.title, article %></p>
-              </div>
+<div class="row">
+   <% @newarrivals.each_with_index do |article, index| %>
+    <div class="col-md-3 col-sm-4 col-xs-6">  
+      <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
           </div>
-       
-    <% end %>
-    <%#= paginate @newarrivals %>
-    
+          <div class="panel-body">
+            <p class="article-title"><%= link_to article.title, article %></p>
+                <ul class="sns-share-buttons">
+               
+                  <% if logged_in? %>
+                  <li>  <%= render 'ownerships/want_button', article: article %></li>
+                  <% end %>
+                   
+               </ul>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>  
+

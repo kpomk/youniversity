@@ -1,15 +1,23 @@
+ 
 <div class="container">
-     
+    <div class="col-md-1 col-lg-1">
+      <div class="sidebar-nav affix" role="complementary">
+       <ul class="nav">
+          <li>  <%= render 'ownerships/want_button', article: @article %></li>
+          <li>  <%= render 'ownerships/like_button', article: @article %></li>
+       </ul>
+      </div>
+    </div>
+   <div class="col-md-11 col-lg-11">
     <div class="panel panel-default">
        <div class="panel-heading">
          <div class="panel-title">
            <h3><%= @article.title %> </h3>
-           <%= render 'ownerships/want_button', article: @article %>
-           <%= render 'ownerships/like_button', article: @article %>
+             
           </div>
        </div>  
       <div class="panel-body"> 
-        <% if @article.content.present? %>
+       <% if @article.content.present? %>
           <div class="row">
               <div>
                  <label class="control-label">内容</label>
@@ -30,20 +38,7 @@
               <%= video_tag(@article.movie.url, :controls => true) %>
           </div>
         <% end %>
-          <%#= flowplayer_for :movie, '/flowplayer.swf' do |player|
-            player.playlist [ {:url => @article.movie_url(:ss).to_s},
-                          {:url => @article.movie_url.to_s,
-                           :autoplay => false,
-                          :autoBuffering => true}]
-            player.onload do
-              'this.unmute();'
-            end
-          end %>    
-           <%#= video_tag("https://s3-ap-northeast-1.amazonaws.com/youniversity/uploads/article/movie/16/8311e53c19.mp4", :autoplay => true, :loop => true) %>   
-          <%#= image_tag @article.movie_url(:ss).to_s %>
-          <%#= video_tag @article.movie_url(:ss).to_s %>
-          <%#= video_tag("@article.movie_url") %>
-          <%#= video_tag("@ariticle.movie.url") %>
+          
 
         <div class="row">
            <label class="control-label">参考文献</label>
@@ -58,5 +53,6 @@
     </div>
       <% end %>
    </div> 
+  </div> 
 </div>
     

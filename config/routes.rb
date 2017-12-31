@@ -18,7 +18,12 @@ Rails.application.routes.draw do
  
  get 'rankings/want', to: 'rankings#want'
  get 'rankings/like', to: 'rankings#like'
+ get 'rankings/userlike', to: 'rankings#like'
+ get 'rankings/userwant', to: 'rankings#want'
+
  
  resources :categories, only: [:index]
+ 
+ get 'toppages/newarrival', to: 'toppages#newarrival'
  
 end

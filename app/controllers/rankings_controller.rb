@@ -15,5 +15,6 @@ class RankingsController < ApplicationController
     @ranking_counts = Like.ranking
     # @arricles = Article.find(@ranking_counts.keys) #タイプミス?
     @articles = Article.find(@ranking_counts.keys)
+    @ranking_articles = Article.where(id: @ranking_counts.keys).page(params[:page]).per(12)
   end
 end

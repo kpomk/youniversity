@@ -1,12 +1,15 @@
 <div class="container">
   <div class="panel panel-default">
      <div class="panel-heading">
-         <span> <h2>新着記事一覧</h2> </span>
+         <span> <h2><%= @user.name %>さんのいいね一覧</h2> </span>
       </div> 
          <div class="panel-body">
-          <% if @articles.present? %>
+          
+          <% if current_user == @user %>   
+            <% if @want_articles.present? %>
             <div class="row">
-              <% @articles.each_with_index do |article, index| %>
+              <% @want_articles.each do |article| %>
+              
                 <%#<div class="item">%>
                   <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="panel panel-default">
@@ -17,7 +20,7 @@
                          <p class="article-title"><%= link_to article.title, article %></p>
                         <%#<div class="buttons text-right">%>
                           <ul class="sns-share-buttons">
-                            <li><p class="text-left"><%= index+1 %>位: <%= @ranking_counts[article.id] %> 人</p></li>
+                           
                               <% if logged_in? %>
                               <li>  <%= render 'ownerships/want_button', article: article %></li>
                               <% end %>
@@ -34,6 +37,7 @@
               <% end %>
           </div>
         <% end %>
+          <%#= paginate @like_articles %>
         </div> 
     </div>    
   </div>
