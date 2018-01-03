@@ -1,15 +1,13 @@
 <div class="container">
   <div class="panel panel-default">
      <div class="panel-heading">
-         <span> <h2>～カテゴリーー覧</h2> </span>
+         <span> <h2><%= @category.category_name %>の検索結果</h2> </span>
       </div> 
          <div class="panel-body">
-          
-          
+          <% if @articles.present? %>
             <div class="row">
-               <% @articles.all.each do |article| %>
-              
-                <%#<div class="item">%>
+              <% @articles.each do |article| %>
+               
                   <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="panel panel-default">
                       <div class="panel-heading text-center">
@@ -21,7 +19,7 @@
                           <ul class="sns-share-buttons">
                            
                               <% if logged_in? %>
-                              <li>  <%= render 'ownerships/like_button', article: article %></li>
+                              <li>  <%= render 'ownerships/want_button', article: article %></li>
                               <% end %>
                                
                            </ul>
@@ -36,7 +34,7 @@
               <% end %>
           </div>
         <% end %>
-          <%#= paginate @like_articles %>
+          <%#= paginate @ranking_articles %>
         </div> 
     </div>    
   </div>

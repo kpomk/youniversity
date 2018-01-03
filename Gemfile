@@ -59,6 +59,7 @@ gem 'carrierwave'
 gem 'fog-aws'
 
 gem 'streamio-ffmpeg'
+#gem 'carrierwave-aws'
 	
 gem 'flowplayer', git: 'git://github.com/scottdavis/flowplayer-gem.git'
 	

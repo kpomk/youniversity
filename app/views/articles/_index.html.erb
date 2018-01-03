@@ -1,17 +1,41 @@
 <div class="container">
   <div class="panel panel-default">
-    <div class="row">
-               <% articles.each do |article| %>
-               
-                <div class="col-xs-12 col-sm-6" "col-md-4">
-                   <div class="thumnail">
-                    <%= image_tag(article.eyecatch,:size => "120x120") %>
-                  
-                   <div class="caption">
-                       <h4><%= link_to article.title, article %> </h4>
-                   </div>
-                </div>   
-     </div>
+     <div class="panel-heading">
+         <span> <h2>検索結果</h2> </span>
+      </div> 
+         <div class="panel-body">
+          <% if @articles.present? %>
+            <div class="row">
+              <% articles.each do |article| %>
+                <%#<div class="item">%>
+                  <div class="col-md-3 col-sm-4 col-xs-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading text-center">
+                        <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
+                      </div>
+                      <div class="panel-body">
+                         <p class="article-title"><%= link_to article.title, article %></p>
+                        <%#<div class="buttons text-right">%>
+                          <ul class="sns-share-buttons">
+                            
+                              <% if logged_in? %>
+                              <li>  <%= render 'ownerships/want_button', article: article %></li>
+                              <% end %>
+                               
+                           </ul>
+                        <%#</div>%>
+                      </div>
+                      <%#<div class="panel-footer">%>
+                       
+                      <%#</div>%>
+                    </div>
+                  </div>
+                <%#</div>%>
               <% end %>
-  </div> 
-</div>
+          </div>
+        <% end %>
+          <%#= paginate @ranking_articles %>
+        </div> 
+    </div>    
+  </div>
+
