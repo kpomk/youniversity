@@ -17,67 +17,21 @@
             </ul>
         </div>
        
-        <% if current_user == @user %>   
+        <% if current_user == @user %>
           <!--後で見る一覧 Start-->
           <% if @want_articles.present? %>
-            <div class="row">
-              <span> <h2><%= link_to 'あとで見る一覧', rankings_userwant_path %></h2></span>
-              <% @want_articles.each do |article| %>
-                <div class="col-md-3 col-sm-4 col-xs-6">  
-                  <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                      <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
-                    </div>
-                    <div class="panel-body">
-                      <p class="article-title"><%= link_to article.title, article %></p>
-                       <%# <div class="buttons text-center">
-                          <%= render 'ownerships/want_button', article: @article %>
-                       <%# </div> %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>   
-            </div>
+            <%= render 'articles', articles: @want_articles, linker_name: 'あとで見る一覧', linker: rankings_userwant_path %>
           <% end %>
           <!--後で見る一覧 おわり-->
            
           <!--いいね記事一覧 Start-->
           <% if @like_articles.present? %>
-            <div class="row">
-              <span> <h2><%= link_to 'いいね記事一覧', rankings_userlike_path %></h2></span>
-               <% @like_articles.each do |article| %>
-                <div class="col-md-3 col-sm-4 col-xs-6">  
-                  <div class="panel panel-default">
-                      <div class="panel-heading text-center">
-                        <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
-                      </div>
-                      <div class="panel-body">
-                        <p class="article-title"><%= link_to article.title, article %></p>
-                      </div>
-                  </div>
-                </div>
-               <% end %>
-               <%#= paginate @like_articles %>
-            </div>  
+            <%= render 'articles', articles: @like_articles, linker_name: 'いいね記事一覧', linker: rankings_userlike_path %>
           <% end %>
           <!--いいね記事一覧 End-->
-    
         <% end %>
-        <div class="row">
-          <span> <h2><%= @user.name %>の投稿記事一覧</h2></span>
-          <% @articles.each do |article| %>
-            <div class="col-md-3 col-sm-4 col-xs-6">  
-              <div class="panel panel-default">
-                <div class="panel-heading text-center">
-                  <%= image_tag(article.eyecatch,:size => "120x120",:class => "border-radius") %>
-                </div>
-                <div class="panel-body">
-                  <p class="article-title"><%= link_to article.title, article %></p>
-                </div>
-              </div>
-            </div> 
-          <% end %> 
-        </div>
+
+        <%= render 'articles', articles: @articles, linker_name: "#{@user.name}の投稿記事一覧", linker: nil %>
     </div>
   </div> 
 </div>
