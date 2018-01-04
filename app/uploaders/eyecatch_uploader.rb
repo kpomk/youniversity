@@ -1,11 +1,13 @@
 class EyecatchUploader < CarrierWave::Uploader::Base
 
-  
+   def default_url
+    "default.jpg"
+   end
   
 
-   def default_url
-       ActionController::Base.helpers.asset_path("half-main-imgbox6.png")
-   end
+   #def default_url
+    #   ActionController::Base.helpers.asset_path("half-main-imgbox6.png")
+   #end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
