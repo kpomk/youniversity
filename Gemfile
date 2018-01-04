@@ -65,3 +65,6 @@ gem 'flowplayer', git: 'git://github.com/scottdavis/flowplayer-gem.git'
 	
 gem 'seed-fu', '~> 2.3'
 
+group :production do
+  gem 'pg'
+end
