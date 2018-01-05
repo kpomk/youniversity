@@ -9,3 +9,8 @@ ja:
         belonging: 所属
         major: 専門
         publication: 出版物
+      article:
+        title: タイトル
+        content: 内容 
+        slideshare_embed: シェアスライド
+        movie: 動画

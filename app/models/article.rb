@@ -35,9 +35,9 @@ class Article < ApplicationRecord
     # errors.add(:content, :slideshare_embed, :movie ,"どれかは入力必須です")
     # errors.add(オブジェクトの属性, "エラーメッセージ") # 1つ1つ使わないとダメ
      #puts "Please input email!"
-    errors.add(:content, "内容,スライドシェア,動画のいづれかは必須です")
-    errors.add(:slideshare_embed, "内容,スライドシェア,動画のいづれかは必須です")
-    errors.add(:movie, "内容,スライドシェア,動画のいづれかは必須です")
+    errors.add(:content, ", スライドシェア, 動画のいづれかは必須です")
+    errors.add(:slideshare_embed, ", 本文, 動画のいづれかは必須です")
+    errors.add(:movie, ", 本文, スライドシェア,のいづれかは必須です")
     end
   end
   
