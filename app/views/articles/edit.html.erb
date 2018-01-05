@@ -1,7 +1,100 @@
-<div class="container">
-  
-  <div class= "row">
-    <div class="panel panel-default">
-    <h1 class="page-header"> <%= @article.title %>の編集</h1>
-<%= render 'articles/new', articles: @articles %>
 
+<div class="container">  
+  <div class= "row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1 class="page-header"><%= @article.title %></h1>
+          <%#= form_for(@article) do |f| %>
+          <%=  form_for(@article, html:{class: 'form-horizontal'}) do |f| %>
+            <% if @article.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                  <% @article.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>  
+            <% end %>
+  
+            <div class="form-group">
+              <%= f.label :title, 'タイトル', class: "col-md-1 col-sm-1 col-xs-12" %>
+              <%= f.text_field :title %>
+            </div>
+      
+            <div class="form-group">
+              <%= f.label :keyword, 'キーワード', class: "col-md-1 col-sm-1 col-xs-12" %>
+              <%= f.text_field :keyword %>
+            </div><br>
+  
+            <div class="form-group">
+              <%= f.label :category_id, class: "col-md-1 col-sm-1 col-xs-12" %>
+              <%= f.collection_select :category_id, Category.all, :id, :category_name, :prompt => true %>
+            </div>
+      
+            <% if @article.persisted? && @article.eyecatch? %>
+              <div class="form-inline">
+                <div class="form-group"> 
+                  <%= f.label :eyecatch, '画像更新', class: "col-md-3 col-sm-1 col-xs-12" %>
+                  <%= f.file_field :eyecatch %>
+                  <%= f.hidden_field :eyecatch_cache %>
+                </div> 
+                <div class="form-group">  
+                  <%= f.label :remove_eyecatch, '画像削除', class: "col-md-4 col-sm-1 col-xs-12" %>
+                  <%= f.check_box :remove_eyecatch %>
+                </div>
+              </div>
+              <br>          
+            <% else %>
+              <div class="form-group">
+                <%= f.label :eyecatch, '画像更新', class: "col-md-1 col-sm-1 col-xs-12" %>
+                <%= f.file_field :eyecatch %>
+                <%= f.hidden_field :eyecatch_cache %>
+              </div>
+            <% end %>
+      
+            <div class="form-group">
+              <%= f.label :slideshare_embed, 'シェアスライドembedコード', class: "col-md-4 col-sm-1 col-xs-12" %>
+              <%= f.text_area :slideshare_embed, class: 'form-control', rows: 1 %>
+            </div>
+          
+            <div class="form-group">
+              <%= f.label :content, '本文', class: "col-md-1 col-sm-1 col-xs-12" %>
+              <%= f.text_area :content , class: 'form-control', rows: 20 %>
+            </div>
+        
+            <% if @article.persisted? && @article.movie? %>
+              <div class="form-inline">
+                <div class="form-group">
+                  <%= f.label :movie, '動画更新', class: "col-md-3 col-sm-1 col-xs-12" %>
+                  <%= f.file_field :movie, :accept => 'video/*' %>
+                </div> 
+                <div class="form-group">  
+                  <%= f.label :movie, '動画削除', class: "col-md-3 col-sm-1 col-xs-12" %>
+                  <%= f.check_box :remove_movie %>
+                </div>
+              </div>
+              <br>          
+            <% else %>
+              <div class="form-group">
+                <%= f.label :movie, '動画更新', class: "col-md-1 col-sm-1 col-xs-12" %>
+                <%= f.file_field :movie, :accept => 'video/*' %>
+              </div>
+            <% end %> 
+
+            <div class="form-group">
+              <%= f.label :bibilography, '参考文献', class: "col-md-1 col-sm-1 col-xs-12" %>
+              <%= f.text_area :bibilography, class: 'form-control' %>
+            </div>
+           
+            <%= f.submit '投稿' %>
+          <% end %>
+          
+          <%= link_to '一覧に戻る', root_path %>
+           
+        </div> 
+      </div>
+    </div> 
+  </div>
+</div>
+  

@@ -8,10 +8,10 @@ class ToppagesController < ApplicationController
     
     #@articles=Article.all.page(params[:page]).per(6)
     
-    @newarrivals = Article.all.order('created_at DESC').page(params[:page]).per(4)
+    @newarrivals = Article.all.order('created_at DESC').page(params[:new_page]).per(4)
     
     @ranking_counts = Like.ranking
-    @ranking_articles = Article.where(id: @ranking_counts.keys).page(params[:page]).per(4)
+    @ranking_articles = Article.where(id: @ranking_counts.keys).page(params[:ranking_page]).per(4)
     
     if params[:category_id]
       @items = Article.where(category_id: params[:category_id])

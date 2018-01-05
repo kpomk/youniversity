@@ -47,7 +47,7 @@
               <%#= eyecatch_image(@article) %>
       
         <button class="btn btn-defalt" , ><%= link_to 'MY pageに戻る', user_path(current_user) %></button>
-      <% if current_user == @user %>    
+      <% if @article.user == current_user %>    
         <%= link_to 'この記事を編集する', edit_article_path(@article) %>
         <%= link_to 'この記事を削除する', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
     </div>

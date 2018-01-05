@@ -1,2 +1,82 @@
-<h1>Articles#update</h1>
-<p>Find me in app/views/articles/update.html.erb</p>
+<div class="container">
+  <div class= "row">
+    <div class="panel panel-default">
+        <h1 class="page-header"><% @article.title %>の編集ページ </h1>
+          <%= form_for(@article) do |f| %>
+             <% if @article.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                    <% @article.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                </ul>
+              </div>  
+            <% end %>
+      
+    <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-md-1 col-sm-1 col-xs-12" control-label>
+              <%= f.label :title, 'タイトル' %>
+            </label> 
+            <%= f.text_field :title %>
+          </div>
+    
+          <div class="form-group">
+            <label class="col-md-2 col-sm-2 col-xs-12" control-label>
+              <%= f.label :keyword, 'キーワード' %>
+            </label>  
+              <%= f.text_field :keyword %>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-1 col-sm-1 col-xs-12" control-label>
+              <%= f.label :category_id %>
+            </label>
+              <%= f.collection_select :category_id, Category.all, :id, :category_name, :prompt => true %>
+          </div>
+        
+          <div class="form-group">
+            <label class="col-md-1 col-sm-1 col-xs-12" control-label>
+              <%= f.label :eyecatch, '表示画像' %>
+            </label>
+              <%= f.file_field :eyecatch %>
+              <%= f.hidden_field :eyecatch_cache %>
+          </div>
+        
+          <div class="form-group">
+            <label class="col-xs-12" control-label>
+              <%= f.label :slideshare_embed, 'シェアスライドembedコード' %>
+            </label>
+              <%= f.text_area :slideshare_embed, class: 'form-control', rows: 1 %>
+          </div>
+        
+          <div class="form-group">
+            <label class="col-xs-12" control-label>
+              <%= f.label :content, '本文' %>
+            </label>
+              <%= f.text_area :content , class: 'form-control', rows: 20 %>
+          </div>
+        
+          <div class="form-group">
+            <label class="col-md-1 col-sm-1 col-xs-12" control-label>
+              <%= f.label :movie, '動画' %>
+            </label>
+              <%= f.file_field :movie, :accept => 'video/*' %>
+          </div>
+      　　　
+      　　<div class="form-group">
+             <label class="col-md-1 col-sm-1 col-xs-12" control-label>
+                   <%= f.label :bibilography, '参考文献' %>
+              </label>
+                  <%= f.text_area :bibilography, class: 'form-control' %>
+          </div>
+             
+             <%= f.submit '投稿' %>
+            <% end %>
+            
+            <%= link_to '一覧に戻る',root_path %>
+           
+    </div> 
+ </div>
+</div>
+  

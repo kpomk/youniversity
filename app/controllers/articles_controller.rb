@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
 
   
   def article_params
-    params.require(:article).permit(:content, :title, :keyword, :category_id, :bibilography, :slideshare_embed, :movie, :eyecatch)
+    params.require(:article).permit(:content, :title, :keyword, :category_id, :bibilography, :slideshare_embed, :movie, :eyecatch, :remove_eyecatch,:remove_movie)
   end
   
   def correct_user

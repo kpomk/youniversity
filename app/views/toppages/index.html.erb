@@ -13,10 +13,10 @@
    <div class="panel panel-default"> 
     <span>  <h2><%= link_to '人気記事一覧', rankings_like_path %></h2>  </span>
       <%= render 'toppages/toppagelike', articles: @ranking_articles %>
-       <%= paginate @ranking_articles %>
+       <%= paginate @ranking_articles, :param_name => 'ranking_page' %>
     <spam> <h2><%= link_to '新着記事一覧', toppages_newarrival_path %></h2> </spam>   
         <%= render 'toppages/newarrival', articles: @newarrivals %>
-       <%= paginate @newarrivals %>
+       <%= paginate @newarrivals, :param_name => 'new_page'  %>
     </div> 
 </div>    
 <%# </div> %>
