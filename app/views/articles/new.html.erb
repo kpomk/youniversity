@@ -4,6 +4,8 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <h1 class="page-header">新規記事作成</h1>
+          <p>参考文献は必須です.</p>
+          
             <%=  form_for(@article, html:{class: 'form-horizontal'}) do |f| %>
               <% if @article.errors.any? %>
                 <div id="error_explanation">
@@ -27,7 +29,7 @@
               </div><br>
     
              <div class="form-group">
-                  <%= f.label :category_id, class: "col-md-1 col-sm-1 col-xs-12" %>
+                  <%= f.label :category_id, 'カテゴリー', class: "col-md-1 col-sm-1 col-xs-12" %>
                   <%= f.collection_select :category_id, Category.all, :id, :category_name, :prompt => true %>
               </div>
             

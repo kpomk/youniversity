@@ -1,57 +1,57 @@
- 
 <div class="container">
     <div class="col-md-1 col-lg-1">
-      <div class="sidebar-nav affix" role="complementary">
-       <ul class="nav">
-          <li>  <%= render 'ownerships/want_button', article: @article %></li>
-          <li>  <%= render 'ownerships/like_button', article: @article %></li>
-       </ul>
-      </div>
-    </div>
-   <div class="col-md-11 col-lg-11">
-    <div class="panel panel-default">
-       <div class="panel-heading">
-         <div class="panel-title">
-           <h3><%= @article.title %> </h3>
-             
-          </div>
-       </div>  
-      <div class="panel-body"> 
-       <% if @article.content.present? %>
-          <div class="row">
-              <div>
-                 <label class="control-label">内容</label>
-                 <%= @article.content %>
-              </div>
-          </div>    
-        <% end %>
-
-        <% if @article.slideshare_embed.present? %>
-          <div class="row">
-             <label class="control-label">シェアスライド</label>
-             <%= raw @article.slideshare_embed %>
-          </div>
-        <% end %>
-
-        <% if @article.movie.present? %>
-          <div class="row">
-              <%= video_tag(@article.movie.url, :controls => true) %>
-          </div>
-        <% end %>
-          
-
-        <div class="row">
-           <label class="control-label">参考文献</label>
-           <%= @article.bibilography %>
+        <div class="sidebar-nav affix" role="complementary">
+            <% unless @article.user == current_user %>
+               <ul class="nav">
+                  <li>  <%= render 'ownerships/want_button', article: @article %></li>
+                  <li>  <%= render 'ownerships/like_button', article: @article %></li>
+               </ul>
+            <% end %> 
         </div>
-              <%#= eyecatch_image(@article) %>
-      
-        <button class="btn btn-defalt" , ><%= link_to 'MY pageに戻る', user_path(current_user) %></button>
-      <% if @article.user == current_user %>    
-        <%= link_to 'この記事を編集する', edit_article_path(@article) %>
-        <%= link_to 'この記事を削除する', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
     </div>
-      <% end %>
+     <div class="col-md-11 col-lg-11">
+        <div class="panel panel-default">
+           <div class="panel-heading">
+              <div class="panel-title">
+                 <h3><%= @article.title %> </h3>
+              </div>
+           </div>  
+           
+          <div class="panel-body"> 
+              <% if @article.content.present? %>
+                  <div class="row">
+                      <div>
+                         <label class="control-label">内容</label>
+                           <%= @article.content %>
+                      </div>
+                  </div>    
+              <% end %>
+    
+             <% if @article.slideshare_embed.present? %>
+              <div class="row">
+                 <label class="control-label">シェアスライド</label>
+                   <%= raw @article.slideshare_embed %>
+              </div>
+            <% end %>
+
+            <% if @article.movie.present? %>
+              <div class="row">
+                  <%= video_tag(@article.movie.url, :controls => true) %>
+              </div>
+            <% end %>
+
+              <div class="row">
+                 <label class="control-label">参考文献</label>
+                     <%= @article.bibilography %>
+              </div>
+                  <%#= eyecatch_image(@article) %>
+            
+                <%= link_to 'MY pageに戻る', user_path(current_user) %>
+                    <% if @article.user == current_user %>    
+                        <%= link_to 'この記事を編集する', edit_article_path(@article) %>
+                        <%= link_to 'この記事を削除する', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+        </div>
+                <% end %>
    </div> 
   </div> 
 </div>
