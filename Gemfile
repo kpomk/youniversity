@@ -70,4 +70,5 @@ group :production do
 end
 
 gem 'mini_magick'
+gem 'dotenv-rails'
 

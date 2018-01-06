@@ -2,8 +2,8 @@ CarrierWave.configure do |config|
   config.fog_provider = 'fog/aws'
   config.fog_credentials = {
     :provider               => 'AWS',
-    :aws_access_key_id      => 'AKIAIR3IQMECTFFUGBZA',
-    :aws_secret_access_key  => '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',
+    :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'],
+    :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],
     :region                 => 'ap-northeast-1'
   }
   
@@ -14,7 +14,7 @@ CarrierWave.configure do |config|
    config.asset_host = 'https://youniversity.s3.amazonaws.com'
    config.fog_public
    config.cache_storage = :fog
-  config.fog_directory = 'your_backet_for_dev' if Rails.env.development?
+  config.fog_directory = 'youniversity' if Rails.env.development?
 
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 end
