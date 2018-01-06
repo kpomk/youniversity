@@ -4,14 +4,14 @@ class EyecatchUploader < CarrierWave::Uploader::Base
     "default.jpg"
    end
   
-
+  #process :resize_to_fit => [50,20]
    #def default_url
     #   ActionController::Base.helpers.asset_path("half-main-imgbox6.png")
    #end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  #include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   
