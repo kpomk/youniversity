@@ -14,7 +14,7 @@ CarrierWave.configure do |config|
    config.asset_host = 'https://youniversity.s3.amazonaws.com'
    config.fog_public
    config.cache_storage = :fog
-  #config.fog_directory = 'your_backet_for_dev' if Rails.env.development?
+  config.fog_directory = 'your_backet_for_dev' if Rails.env.development?
 
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 end
