@@ -31,8 +31,30 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    flash[:success] = '退会しました'
+    redirect_to root_path
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
     
-   
+    if @user.update(user_params)
+      flash[:success] = 'プロフィールの編集 が完了しました'
+      redirect_to @user
+    else
+      flash.now[:danger] = 'プロフィール編集に失敗しました'
+      render :edit
+    end
   end
   
   

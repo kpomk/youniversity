@@ -2,9 +2,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
      <h2 class="panel-title"><%= @user.name %> さんのプロフィール
-       <button class="btn btn-defalt" , >
-         <%= link_to '新規記事の作成', new_article_path %>
-       </button>
+        <button class="btn btn-defalt" , >
+          <%= link_to '新規記事の作成', new_article_path %>
+        </button>
+        <button class="btn btn-defalt" , >
+          <%= link_to 'プロフィール編集', edit_user_path %>
+        </button> 
       </h2>
     </div>   
      
