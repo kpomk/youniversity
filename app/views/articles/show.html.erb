@@ -22,11 +22,13 @@
                   <div class="row">
                       <div>
                          <label class="control-label">内容</label>
-                           <%= @article.content %>
+                           <%#= @article.content %>
+                           <%= qiita_markdown(@article.content) %>
+                            
                       </div>
                   </div>    
               <% end %>
-    
+                
              <% if @article.slideshare_embed.present? %>
               <div class="row">
                  <label class="control-label">シェアスライド</label>

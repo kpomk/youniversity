@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
  resources :articles, only: [:index, :show, :new, :create, :destroy, :edit, :update]
+ resources :articles 
+   post 'api_markdown' => 'articles#api_markdown'
  
  resources :ownerships, only: [:create, :destroy]
  

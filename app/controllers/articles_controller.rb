@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  
+  include ApplicationHelper
   before_action :require_user_logged_in, only: [:new, :create, :destroy, :edit, :update, :show]
-   before_action :correct_user, only: [:destroy, :edit, :update]
+  before_action :correct_user, only: [:destroy, :edit, :update]
   
   def index
    
@@ -16,20 +16,36 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    
   end
 
-
+  # POST /pages
+  # POST /pages.json
   def create
     @article = current_user.articles.build(article_params)
-    if @article.save
-      flash[:success] = '記事をを投稿しました。'
-      redirect_to user_path(current_user)
-    else
-      @articles = current_user.articles.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = '記事のの投稿に失敗しました。'
-      render new_article_path
+
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to @article, notice: '記事をを投稿しました。' }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
+  
+  #def create
+    #@article = current_user.articles.build(article_params)
+    #if @article.save
+      #flash[:success] = '記事をを投稿しました。'
+      #redirect_to user_path(current_user)
+    #else
+     # @articles = current_user.articles.order('created_at DESC').page(params[:page])
+      #flash.now[:danger] = '記事のの投稿に失敗しました。'
+     # render new_article_path
+   # end
+ # end
 
 
   def destroy
@@ -44,19 +60,39 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
   end
-
+  
+  # PATCH/PUT /pages/1
+  # PATCH/PUT /pages/1.json
   def update
     @article = Article.find(params[:id])
-    
-    if @article.update(article_params)
-      flash[:success] = '記事の編集 は正常に実行されました'
-      redirect_to @article
-    else
-      flash.now[:danger] = '記事の編集 に失敗しました'
-      render :edit
+    respond_to do |format|
+      if @article.update(page_params)
+        format.html { redirect_to @article, notice: '記事の編集が完了しました' }
+        format.json { render :show, status: :ok, location: @article }
+      else
+        format.html { render :edit }
+        format.json { render json: @article .errors, status: :unprocessable_entity }
+      end
     end
   end
   
+  
+  #def update
+   # @article = Article.find(params[:id])
+    
+    #if @article.update(article_params)
+     # flash[:success] = '記事の編集 は正常に実行されました'
+      #redirect_to @article
+  #  else
+     # flash.now[:danger] = '記事の編集 に失敗しました'
+    #  render :edit
+   # end
+  #end
+  def api_markdown
+    markdown = qiita_markdown(params[:text])
+    pp markdown
+    render text: markdown
+  end
   
   
   private
@@ -72,6 +108,7 @@ class ArticlesController < ApplicationController
       redirect_to root_url
   end
   
-end
+  
+  end
   
 end

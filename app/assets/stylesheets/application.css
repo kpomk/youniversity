@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+/*= require pagedown_bootstrap */
 /* body */
 body {
   background: #f2f2f2;
@@ -118,3 +118,5 @@ margin-right:0;
     
     margin-bottom: 5px;
 }
+/*= require pagedown_bootstrap */
+

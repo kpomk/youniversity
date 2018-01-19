@@ -45,6 +45,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -54,6 +56,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    charlock_holmes (0.7.5)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -69,6 +72,7 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubis (2.7.0)
+    escape_utils (1.1.1)
     excon (0.60.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -88,8 +92,18 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
+    gemoji (3.0.0)
+    github-linguist (4.8.18)
+      charlock_holmes (~> 0.7.3)
+      escape_utils (~> 1.1.0)
+      mime-types (>= 1.19)
+      rugged (>= 0.23.0b)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    greenmat (3.2.2.3)
+    html-pipeline (2.7.1)
+      activesupport (>= 2)
+      nokogiri (>= 1.4)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
@@ -121,6 +135,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    mem (0.1.5)
     method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -134,6 +149,8 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    nokogumbo (1.4.13)
+      nokogiri
     pg (0.21.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -141,7 +158,19 @@ GEM
     pry-byebug (3.5.1)
       byebug (~> 9.1)
       pry (~> 0.10)
+    public_suffix (3.0.1)
     puma (3.11.0)
+    pygments.rb (1.2.1)
+      multi_json (>= 1.0.0)
+    qiita-markdown (0.24.0)
+      addressable
+      gemoji
+      github-linguist (~> 4.0)
+      greenmat (= 3.2.2.3)
+      html-pipeline (~> 2.0)
+      mem
+      pygments.rb (~> 1.0)
+      sanitize
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -175,6 +204,11 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rugged (0.26.0)
+    sanitize (4.5.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4.1)
     sass (3.5.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -233,6 +267,7 @@ DEPENDENCIES
   dotenv-rails
   flowplayer!
   fog-aws
+  github-linguist
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
@@ -242,6 +277,7 @@ DEPENDENCIES
   pg
   pry-byebug
   puma (~> 3.0)
+  qiita-markdown
   rails (~> 5.0.6)
   rails-i18n
   sass-rails (~> 5.0)

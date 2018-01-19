@@ -71,4 +71,5 @@ end
 
 gem 'mini_magick'
 gem 'dotenv-rails'
-
+gem 'qiita-markdown'
+gem 'github-linguist'
