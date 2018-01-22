@@ -5,17 +5,21 @@
 
 $ ->
   update_preview = (text) ->
-    $.ajax
-      url: '/api_markdown'
-      type: 'POST'
-      data: {text: text}
-      success: (data) ->
-        $('#preview').html(data)
-        return
-      error: (xhr, status, err) ->
-        $('#preview').html 'エラー発生 ' + err
-        return
+    _textarea = $('#article_content').val()
+    if _textarea?
+      #この位置が trueの場合の処理位置
+      # alert("koko")
+      $.ajax
+        url: '/api_markdown'
+        type: 'POST'
+        data: {text: _textarea}
+        success: (data) ->
+          $('#preview').html(data)
+          return
+        error: (xhr, status, err) ->
+          $('#preview').html 'エラー発生 ' + err
+          return
 
-  $('#article_content').on 'click', ->
-    update_preview($(this).val())
+  $('#article_content_preview').on 'click', ->
+    update_preview()
     return
