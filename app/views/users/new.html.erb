@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-offset-3 col-xs-6">
     <div class="panel panel-default">
-      <div class="panel-heading">会員登録</div>
+      <div class="panel-heading">会員登録（無料）</div>
       <div class="panel-body">
         <%= form_for(@user) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
@@ -27,17 +27,17 @@
           
           <div class="form-group">
             <%= f.label :belonging, '所属' %>
-            <%= f.text_field :belonging, class: 'form-control' %>
+            <%= f.text_field :belonging, class: 'form-control',:placeholder => "任意（○○大学）" %>
           </div>
           
           <div class="form-group">
             <%= f.label :major, '専門分野' %>
-            <%= f.text_field :major, class: 'form-control' %>
+            <%= f.text_field :major, class: 'form-control',:placeholder => "任意（パーソナリティ心理学）"  %>
           </div>
           
           <div class="form-group">
-            <%= f.label :publication, '出版物' %>
-            <%= f.text_field :publication, class: 'form-control' %>
+            <%= f.label :publication, '出版物または論文' %>
+            <%= f.text_field :publication, class: 'form-control',:placeholder => "任意" %>
           </div>
           
           

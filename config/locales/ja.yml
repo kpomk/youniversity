@@ -11,9 +11,9 @@ ja:
         publication: 出版物
       article:
         title: タイトル
-        content: 内容 
+        content: 本文 
         slideshare_embed: シェアスライド
         movie: 動画
-        category: カテゴリー
+        Category: カテゴリー
         keyword: キーワード
         bibilography: 参考文献

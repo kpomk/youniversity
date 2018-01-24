@@ -15,18 +15,18 @@
       
          <% if logged_in? %>
       <ul class="nav navbar-nav">
-        <li><%= form_tag articles_path, :method => 'get', class: 'navbar-form', role: 'search' do %> <%#　projects_pathはモデル名で読みかえること %>
-                 
-                  <form class="navbar-form" >
-                     <div class="form-group">
-                        <%= text_field_tag :search, params[:search] %>
-                        <%#= text_field_tag :keyword, @keyword, class: 'form-control input-lg', placeholder: "キーワードを入力"  %>
-                      </div>
-                      <%= submit_tag "検索", :keyword => nil %>
-                      
-                      <%##params[:search]%>
-                  </form>  
-                <% end %>
+              <li><%= form_tag articles_path, :method => 'get', class: 'navbar-form', role: 'search' do %> <%#　projects_pathはモデル名で読みかえること %>
+                       
+                        <form class="navbar-form" >
+                           <div class="form-group">
+                              <%= text_field_tag :search, params[:search] %>
+                              <%#= text_field_tag :keyword, @keyword, class: 'form-control input-lg', placeholder: "キーワードを入力"  %>
+                            </div>
+                            <%= submit_tag "検索", :keyword => nil %>
+                            
+                            <%##params[:search]%>
+                        </form>  
+                      <% end %>
               </li>   
           <li class="dropdown active" >
               <li class="dropdown">
