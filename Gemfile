@@ -57,9 +57,9 @@ gem 'rails-i18n'
 gem 'pry-byebug', group: :development
 gem 'carrierwave'
 gem 'fog-aws'
-
+gem 'fog'
 gem 'streamio-ffmpeg'
-#gem 'carrierwave-aws'
+gem 'carrierwave-aws'
 	
 gem 'flowplayer', git: 'git://github.com/scottdavis/flowplayer-gem.git'
 	
@@ -73,3 +73,4 @@ gem 'mini_magick'
 gem 'dotenv-rails'
 gem 'qiita-markdown'
 gem 'github-linguist'
+gem 'fog'

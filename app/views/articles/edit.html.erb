@@ -18,50 +18,69 @@
             <% end %>
   
             <div class="form-group">
-              <%= f.label :title, 'タイトル', class: "col-md-1 col-sm-1 col-xs-12" %>
-              <%= f.text_field :title %>
+                  <%= f.label :title, 'タイトル', class: "col-md-1 col-sm-1 col-xs-12" %>
+                  <%= f.text_area :title, class: "form-control" %>
             </div>
-      
+        
+         
             <div class="form-group">
-              <%= f.label :keyword, 'キーワード', class: "col-md-1 col-sm-1 col-xs-12" %>
-              <%= f.text_field :keyword %>
-            </div><br>
-  
-            <div class="form-group">
-              <%= f.label :category_id, class: "col-md-1 col-sm-1 col-xs-12" %>
-              <%= f.collection_select :category_id, Category.all, :id, :category_name, :prompt => true %>
+                <%= f.label :keyword, 'キーワード', class: "col-md-4 col-sm-4 col-xs-12" %>
+                <%#= f.label :keyword, 'キーワード'  %>
+                <%= f.text_field :keyword, class: "form-control",:placeholder => "複数入力可　例）心理学　パーソナリティ" %>
             </div>
-      
-            <% if @article.persisted? && @article.eyecatch? %>
-              <div class="form-inline">
-                <div class="form-group"> 
-                  <%= f.label :eyecatch, '画像更新', class: "col-md-3 col-sm-1 col-xs-12" %>
-                  <%= f.file_field :eyecatch %>
-                  <%= f.hidden_field :eyecatch_cache %>
-                </div> 
-                <div class="form-group">  
-                  <%= f.label :remove_eyecatch, '画像削除' %>
-                  <%= f.check_box :remove_eyecatch %>
-                </div>
-              </div>
-              <br>          
-            <% else %>
-              <div class="form-group">
-                <%= f.label :eyecatch, '画像更新', class: "col-md-1 col-sm-1 col-xs-12" %>
-                <%= f.file_field :eyecatch %>
-                <%= f.hidden_field :eyecatch_cache %>
-              </div>
-            <% end %>
+            
+           
+           <div class="form-group">
+                <%= f.label :category_id, 'カテゴリー', class: "col-md-2 col-sm-2 col-xs-12" %>
+                <%= f.collection_select :category_id, Category.all, :id, :category_name, :prompt => true %>
+            </div>
+       
+             <div class="row">
+                 <% if @article.persisted? && @article.eyecatch? %>
+                  <div class="form-inline">
+                      <div class="col-sm-6 col-md-6 col-lg-6"> 
+                          <div class="form-group"> 
+                              <%= f.label :eyecatch, '画像更新', class: "col-md-3 col-sm-1 col-xs-12" %>
+                              <%= f.file_field :eyecatch %>
+                              <%= f.hidden_field :eyecatch_cache %>
+                          </div> 
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-lg-6"> 
+                          <div class="form-group">  
+                              <%= f.label :remove_eyecatch, '画像削除' %>
+                              <%= f.check_box :remove_eyecatch %>
+                          </div>
+                      </div>    
+                  </div>
+                  <% else %>
+                  <div class="form-group">
+                      <%= f.label :eyecatch, '画像更新', class: "col-md-1 col-sm-1 col-xs-12" %>
+                      <%= f.file_field :eyecatch %>
+                      <%= f.hidden_field :eyecatch_cache %>                  </div>
+                <% end %>
+            </div><br>    
+            
+            
+            
       
             <%#  <div class="form-group">
                 <%= f.label :slideshare_embed, 'シェアスライドembedコード', class: "col-md-4 col-sm-1 col-xs-12" %>
             <%#    <%= f.text_area :slideshare_embed, class: 'form-control', rows: 1 %>
             <%#  </div> %>
-          
-            <div class="form-group">
-              <%= f.label :content, '本文', class: "col-md-1 col-sm-1 col-xs-12" %>
-              <%= f.text_area :content , class: 'form-control', rows: 20 %>
-            </div>
+          <%= link_to '見やすい記事作成方法はこちら', 'http://archive.fo/GO1Vo' %>
+            <div class="row">
+                <div class="col-sm-7 col-md-7 col-lg-7">
+                   <div class="form-group">
+                      <%= f.label :content, '内容' %><br>
+                      <%= f.text_area :content, class: "form-control",cols: 80, rows: 10 %>
+                   </div>
+                </div> 
+              
+                <div class="col-sm-5 col-md-5 col-lg-5">  
+                    <button id="article_content_preview" type="button">Preview</button>
+                      <div id="preview" class="panel-body"><%= qiita_markdown(@article.content) %></div>
+                </div> 
+            </div>  
         
             <% if @article.persisted? && @article.movie? %>
               <div class="form-inline">
