@@ -2,10 +2,10 @@
   <div class="panel panel-default">
     <div class="panel-heading">
      <h2 class="panel-title"><%= @user.name %> さんのプロフィール
-        <button class="btn btn-defalt" , >
+        <button class="btn btn-default" , >
           <%= link_to '新規記事の作成', new_article_path %>
         </button>
-        <button class="btn btn-defalt" , >
+        <button class="btn btn-default" , >
           <%= link_to 'プロフィール編集', edit_user_path %>
         </button> 
       </h2>
@@ -35,6 +35,7 @@
         <% end %>
 
         <%= render 'articles', articles: @articles, linker_name: "#{@user.name}の投稿記事一覧", linker: nil %>
+        <%= link_to 'TOP PAGEに戻る', root_path %>
     </div>
   </div> 
 </div>
