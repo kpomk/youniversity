@@ -20,6 +20,10 @@ class ToppagesController < ApplicationController
     end
   end
   
+  def show
+  
+  end
+  
   def newarrival
      @newarrivals = Article.all.order('created_at DESC').page(params[:page]).per(12)   
   end
