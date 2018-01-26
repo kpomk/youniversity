@@ -66,7 +66,7 @@ gem 'flowplayer', git: 'git://github.com/scottdavis/flowplayer-gem.git'
 gem 'seed-fu', '~> 2.3'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.21.0'
 end
 
 gem 'mini_magick'
@@ -74,3 +74,4 @@ gem 'dotenv-rails'
 gem 'qiita-markdown'
 gem 'github-linguist'
 gem 'fog'
+gem 'rugged', '0.26.0'
