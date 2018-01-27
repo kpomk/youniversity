@@ -63,31 +63,33 @@ class ArticlesController < ApplicationController
   
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
+  # def update
+  #   @article = Article.find(params[:id])
+  #   respond_to do |format|
+  #     if @article.update(article_params)
+  #       flash[:success] ='記事の編集が完了しました'
+  #       #format.html { redirect_to @article, notice: '記事の編集が完了しました' }
+  #       #format.json { render :show, status: :ok, location: @article }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @article .errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+  
+  
   def update
     @article = Article.find(params[:id])
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: '記事の編集が完了しました' }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit }
-        format.json { render json: @article .errors, status: :unprocessable_entity }
-      end
+    
+    if @article.update(article_params)
+      flash[:success] = '記事の編集が完了しました'
+      redirect_to @article
+    else
+      flash.now[:danger] = '記事の編集 に失敗しました'
+      render :edit
     end
   end
   
-  
-  #def update
-   # @article = Article.find(params[:id])
-    
-    #if @article.update(article_params)
-     # flash[:success] = '記事の編集 は正常に実行されました'
-      #redirect_to @article
-  #  else
-     # flash.now[:danger] = '記事の編集 に失敗しました'
-    #  render :edit
-   # end
-  #end
   def api_markdown
     
     markdown = qiita_markdown(params[:text])
