@@ -89,9 +89,12 @@ class ArticlesController < ApplicationController
    # end
   #end
   def api_markdown
+    
     markdown = qiita_markdown(params[:text])
+    
     pp markdown
-    render text: markdown
+    render plain: markdown
+    #render text: markdown
   end
   
   
