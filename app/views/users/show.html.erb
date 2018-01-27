@@ -35,7 +35,15 @@
         <% end %>
 
         <%= render 'articles', articles: @articles, linker_name: "#{@user.name}の投稿記事一覧", linker: nil %>
-        <%= link_to 'TOP PAGEに戻る', root_path %>
+        
+        <div>
+          
+            <%= link_to 'TOP PAGEに戻る', root_path %>
+                   
+          
+            <%= link_to '退会', @user, method: :delete, data: { confirm: '本当に退会しますか？' } %></li>
+          
+        </div>  
     </div>
   </div> 
 </div>
