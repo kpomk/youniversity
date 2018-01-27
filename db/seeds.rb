@@ -8,3 +8,6 @@
 Category.create(category_name: '文学')
 Category.create(category_name: '心理学')
 Category.create(category_name: '社会学')
+Category.create(category_name: '経営学')
+Category.create(category_name: '教育学')
+Category.create(category_name: '医学')
