@@ -93,8 +93,8 @@ class ArticlesController < ApplicationController
     markdown = qiita_markdown(params[:text])
     
     pp markdown
-    render plain: markdown
-    #render text: markdown
+    #render plain: markdown　#どちらでもできた
+    render text: markdown
   end
   
   

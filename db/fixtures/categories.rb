@@ -27,5 +27,7 @@ Category.seed(:id,
   { :id => 4, :category_name => "経営学" },
   { :id => 5, :category_name => "教育学" },
   { :id => 6, :category_name => "医学" },
+  { :id => 7, :category_name => "農学" },
+  { :id => 8, :category_name => "栄養学" },
 
 )
