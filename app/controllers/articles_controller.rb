@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     respond_to do |format|
-      if @article.update(page_params)
+      if @article.update(article_params)
         format.html { redirect_to @article, notice: '記事の編集が完了しました' }
         format.json { render :show, status: :ok, location: @article }
       else
