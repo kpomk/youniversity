@@ -1,1 +1,0 @@
-$('#inputDatabaseName').keyup(function () { alert('test'); });$('#inputDatabaseName').keyup(function () { alert('test'); });
